@@ -7,10 +7,10 @@
 // USER-DEFINED VARS FOR CONFIG
 var test_email = 'chris.vo+debug@velir.com';
 var test_id = '123456';
-var mp_dataplan_id = 'web_client_native_mobile_apps_data_plan';
-var mp_dataplan_vers = 1;
-var api_key = 'us2-61f41b8a4f501a41901cf46e7710c5d3';
-var api_secret = 'TpSRz8PL0mbyEbxmf3f0wly5m4M-_XGKWdZpG2lZo0Zux7hXEg6yLMIOz8fdKssH';
+const mp_dataplan_id = 'web_client_native_mobile_apps_data_plan';
+const mp_dataplan_vers = 1;
+const api_key = 'us2-61f41b8a4f501a41901cf46e7710c5d3';
+const api_secret = 'TpSRz8PL0mbyEbxmf3f0wly5m4M-_XGKWdZpG2lZo0Zux7hXEg6yLMIOz8fdKssH';
 
 // SNIPPET FROM https://docs.mparticle.com/developers/sdk/web/initialization/
 // SLIGHTLY EDITED TO USE THE ABOVE VARS FOR EASE OF TESTING
