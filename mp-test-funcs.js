@@ -1,6 +1,5 @@
 // DEFINING EVENT FUNCTIONS AND PAYLOADS FOR EASE OF TESTING
 // PAYLOADS
-
 var share_event_properties = {
     share_channel: 'copy link',
     placement: 'fundraiser sidebar',
@@ -38,27 +37,36 @@ var customAttributes = {
     "GA4.Location": window.location.href,
 };
 
-var product = window.mParticle.eCommerce.createProduct(
-    "Fighting Injustice on Hilton Head Island", // Name
-    "12345678", // SKU
-    0, // Price
-    1, // Quantity
-    undefined, // Variant
-    "animals", // Category
-    undefined, // Brand
-    undefined, // Position
-    undefined, // Coupon
-    customProductAttributes, // Attributes
-);
+var product =
+    try {
+        window.mParticle.eCommerce.createProduct(
+            "Fighting Injustice on Hilton Head Island", // Name
+            "12345678", // SKU
+            0, // Price
+            1, // Quantity
+            undefined, // Variant
+            "animals", // Category
+            undefined, // Brand
+            undefined, // Position
+            undefined, // Coupon
+            customProductAttributes, // Attributes
+        );
+    } catch (e) {
+        console.debug(e);
+    }
 
 // Page Viewed - PI-39
 function testPageView(event) {
-    mParticle.logPageView(
-        event, {
-            page_title: document.title,
-            page_url: window.location.href
-        }, customAttributes
-    );
+    try {
+        mParticle.logPageView(
+            event, {
+                page_title: document.title,
+                page_url: window.location.href
+            }, customAttributes
+        );
+    } catch (e) {
+        console.debug(e);
+    }
 }
 
 // Custom Event - PI-37
@@ -67,13 +75,17 @@ function testPageView(event) {
 // Navigation:1, Social: 7
 // https://docs.mparticle.com/developers/sdk/web/event-tracking/#custom-event-type
 function testCustomEvent(event, eventType) {
-    mParticle.logEvent(
-        event,
-        eventType, {
-            ...customProductAttributes,
-            ...share_event_properties
-        }
-    );
+    try {
+        mParticle.logEvent(
+            event,
+            eventType, {
+                ...customProductAttributes,
+                ...share_event_properties
+            }
+        );
+    } catch (e) {
+        console.debug(e);
+    }
 }
 
 // Commerce Event - PI-9
@@ -81,9 +93,13 @@ function testCustomEvent(event, eventType) {
 // Checkout: 3, Click: 5, ViewDetail: 6, Purchase: 7
 // https://github.com/mParticle/mparticle-web-sdk/blob/master-v2/src/types.js#L206-L218
 function testCommerceEvent(eventType) {
-    mParticle.eCommerce.logProductAction(
-        eventType,
-        [product],
-        customAttributes,
-    );
+    try {
+        mParticle.eCommerce.logProductAction(
+            eventType,
+            [product],
+            customAttributes,
+        );
+    } catch (e) {
+        console.debug(e);
+    }
 }
