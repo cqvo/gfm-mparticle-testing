@@ -115,41 +115,7 @@ window.mParticle = {
 // END INITIALIZATION SNIPPET
 
 // DEFINING EVENT FUNCTIONS AND PAYLOADS FOR EASE OF TESTING
-// PI-39
-function testPageView() {
-    let customAttributes = {
-        is_logged_in: "logged in",
-        source: "web client",
-        "GA4.Title": document.title,
-        "GA4.Location": window.location.href,
-    };
-    mParticle.logPageView(
-        "CV Debugging", {
-            page_title: document.title,
-            page_url: window.location.href
-        }, customAttributes
-    );
-}
-
-// PI-37
-function testShareCTA() {
-    mParticle.logEvent(
-        'Share CTA Clicked',
-        mParticle.EventType.Social, {
-            ...customProductAttributes,
-            ...share_event_properties
-        }
-    );
-}
-
-// PI-9
-function testCommerceEvent() {
-    mParticle.eCommerce.logProductAction(
-        mParticle.ProductActionType.ViewDetail,
-        [product],
-        customAttributes,
-    );
-}
+// PAYLOADS
 
 const share_event_properties = {
     share_channel: 'copy link',
@@ -200,3 +166,38 @@ const customAttributes = {
     "GA4.Title": document.title,
     "GA4.Location": window.location.href,
 };
+// PI-39
+function testPageView() {
+    let customAttributes = {
+        is_logged_in: "logged in",
+        source: "web client",
+        "GA4.Title": document.title,
+        "GA4.Location": window.location.href,
+    };
+    mParticle.logPageView(
+        "CV Debugging", {
+            page_title: document.title,
+            page_url: window.location.href
+        }, customAttributes
+    );
+}
+
+// PI-37
+function testShareCTA() {
+    mParticle.logEvent(
+        'Share CTA Clicked',
+        mParticle.EventType.Social, {
+            ...customProductAttributes,
+            ...share_event_properties
+        }
+    );
+}
+
+// PI-9
+function testCommerceEvent() {
+    mParticle.eCommerce.logProductAction(
+        mParticle.ProductActionType.ViewDetail,
+        [product],
+        customAttributes,
+    );
+}
