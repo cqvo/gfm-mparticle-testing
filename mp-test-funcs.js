@@ -51,7 +51,7 @@ var product = window.mParticle.eCommerce.createProduct(
     customProductAttributes, // Attributes
 );
 
-// PI-39
+// Page Viewed - PI-39
 function testPageView(event) {
     mParticle.logPageView(
         event, {
@@ -61,7 +61,8 @@ function testPageView(event) {
     );
 }
 
-// PI-37
+// Custom Event - PI-37
+// 'event' for PI-37 is 'Share CTA Clicked'
 // eventType should be an integer
 // Navigation:1, Social: 7
 // https://docs.mparticle.com/developers/sdk/web/event-tracking/#custom-event-type
@@ -75,7 +76,7 @@ function testCustomEvent(event, eventType) {
     );
 }
 
-// PI-9
+// Commerce Event - PI-9
 // eventType should be an integer
 // Checkout: 3, Click: 5, ViewDetail: 6, Purchase: 7
 // https://github.com/mParticle/mparticle-web-sdk/blob/master-v2/src/types.js#L206-L218
