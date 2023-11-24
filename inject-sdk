@@ -1,3 +1,5 @@
+// Copy+paste into browser console to initialize the mParticle SDK and load testing functions
+
 const githubUrl = 'https://raw.githubusercontent.com/cqvo/gfm-mparticle-testing/main/gfm-mparticle.js';
 fetch(githubUrl)
     .then(response => response.text())
