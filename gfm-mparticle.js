@@ -1,5 +1,7 @@
 // This first chunk is from https://docs.mparticle.com/developers/sdk/web/initialization/
 // There are a few user-defined variables that will be used in window.mParticle.config
+// The functions testPageView(), testShareCTA(), and testCommerceEvent() and their payloads
+// have also been defined to allow for ease of testing.
 
 // USER-DEFINED VARS FOR CONFIG
 const test_email = 'chris.vo+debug@velir.com';
