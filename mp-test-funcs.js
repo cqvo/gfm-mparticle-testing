@@ -37,9 +37,9 @@ var customAttributes = {
     "GA4.Location": window.location.href,
 };
 
-var product =
+
     try {
-        window.mParticle.eCommerce.createProduct(
+        var product = window.mParticle.eCommerce.createProduct(
             "Fighting Injustice on Hilton Head Island", // Name
             "12345678", // SKU
             0, // Price
