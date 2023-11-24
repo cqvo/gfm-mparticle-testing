@@ -32,6 +32,13 @@ var customProductAttributes = {
     payment_processor: "adyen",
 };
 
+var customAttributes = {
+    is_logged_in: "logged in",
+    source: "web client",
+    "GA4.Title": document.title,
+    "GA4.Location": window.location.href,
+};
+
 var product = window.mParticle.eCommerce.createProduct(
     "Fighting Injustice on Hilton Head Island", // Name
     "12345678", // SKU
@@ -45,12 +52,6 @@ var product = window.mParticle.eCommerce.createProduct(
     customProductAttributes, // Attributes
 );
 
-var customAttributes = {
-    is_logged_in: "logged in",
-    source: "web client",
-    "GA4.Title": document.title,
-    "GA4.Location": window.location.href,
-};
 // PI-39
 function testPageView(event) {
     mParticle.logPageView(
@@ -62,10 +63,13 @@ function testPageView(event) {
 }
 
 // PI-37
-function testCustomEvent(event) {
+// eventType should be an integer
+// Navigation:1, Social: 7
+// https://docs.mparticle.com/developers/sdk/web/event-tracking/#custom-event-type
+function testCustomEvent(event, eventType) {
     mParticle.logEvent(
         event,
-        mParticle.EventType.Social, {
+        eventType, {
             ...customProductAttributes,
             ...share_event_properties
         }
@@ -73,9 +77,12 @@ function testCustomEvent(event) {
 }
 
 // PI-9
-function testCommerceEvent(event) {
+// eventType should be an integer
+// Checkout: 3, Click: 5, ViewDetail: 6, Purchase: 7
+// https://github.com/mParticle/mparticle-web-sdk/blob/master-v2/src/types.js#L206-L218
+function testCommerceEvent(eventType) {
     mParticle.eCommerce.logProductAction(
-        mParticle.ProductActionType.ViewDetail,
+        eventType,
         [product],
         customAttributes,
     );
